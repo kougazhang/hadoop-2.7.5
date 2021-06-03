@@ -19,11 +19,11 @@
 <configuration>
   <property>
     <name>dfs.name.dir</name>
-    <value>/disk/ssd1/hdfs/name</value>
+    <value>{{ dfs_name_dir }}</value>
   </property>
   <property>
     <name>dfs.data.dir</name>
-    <value>/disk/sata01/hdfs/data,/disk/sata02/hdfs/data,/disk/sata03/hdfs/data,/disk/sata04/hdfs/data,/disk/sata05/hdfs/data,/disk/sata06/hdfs/data,/disk/sata07/hdfs/data,/disk/sata08/hdfs/data,/disk/sata09/hdfs/data,/disk/sata10/hdfs/data</value>
+    <value>{{ dfs_data_dir }}</value>
   </property>
   <property>
     <name>dfs.datanode.address</name>
@@ -55,34 +55,34 @@
   </property>
   <property>
     <name>dfs.nameservices</name>
-    <value>logger-v2</value>
+    <value>{{ dfs_nameservices }}</value>
   </property>
   <property>
-    <name>dfs.ha.namenodes.logger-v2</name>
+    <name>dfs.ha.namenodes.{{ dfs_nameservices }}</name>
     <value>nn1,nn2</value>
   </property>
   <property>
-    <name>dfs.namenode.rpc-address.logger-v2.nn1</name>
-    <value>192.168.33.10:8020</value>
+    <name>dfs.namenode.rpc-address.{{ dfs_nameservices }}.nn1</name>
+    <value>{{ dfs_namenode_1 }}:8020</value>
   </property>
   <property>
-    <name>dfs.namenode.rpc-address.logger-v2.nn2</name>
-    <value>192.168.33.11:8020</value>
+    <name>dfs.namenode.rpc-address.{{ dfs_nameservices }}.nn2</name>
+    <value>{{ dfs_namenode_2 }}:8020</value>
   </property>
   <property>
-    <name>dfs.namenode.http-address.logger-v2.nn1</name>
-    <value>192.168.33.10:50070</value>
+    <name>dfs.namenode.http-address.{{ dfs_nameservices }}.nn1</name>
+    <value>{{ dfs_namenode_1 }}:50070</value>
   </property>
   <property>
-    <name>dfs.namenode.http-address.logger-v2.nn2</name>
-    <value>192.168.33.11:50070</value>
+    <name>dfs.namenode.http-address.{{ dfs_nameservices }}.nn2</name>
+    <value>{{ dfs_namenode_2 }}:50070</value>
   </property>
   <property>
     <name>dfs.namenode.shared.edits.dir</name>
-    <value>qjournal://192.168.33.10:8485;192.168.33.11:8485;192.168.33.12:8485/logger-v2</value>
+    <value>qjournal://{{ dfs_namenode_1 }}:8485;{{ dfs_namenode_2 }}:8485;192.168.33.12:8485/{{ dfs_nameservices }}</value>
   </property>
   <property>
-    <name>dfs.client.failover.proxy.provider.logger-v2</name>
+    <name>dfs.client.failover.proxy.provider.{{ dfs_nameservices }}</name>
     <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
   </property>
   <property>
@@ -103,7 +103,7 @@
   </property>
   <property>
     <name>dfs.journalnode.edits.dir</name>
-    <value>/disk/ssd1/hdfs/journal</value>
+    <value>{{ dfs_journalnode_edits_dir }}</value>
   </property>
   <property>
     <name>dfs.ha.automatic-failover.enabled</name>

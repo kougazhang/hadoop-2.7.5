@@ -22,9 +22,9 @@
 # remote nodes.
 
 # The java implementation to use.
-JAVA_HOME=/opt/java
+JAVA_HOME={{ java_home }}
 
-export HADOOP_LOG_DIR=/disk/ssd1/logs/hdfs
+export HADOOP_LOG_DIR={{ hadoop_log_dir }}
 export HADOOP_PID_DIR=/var/run
 
 export JAVA_HOME=${JAVA_HOME}

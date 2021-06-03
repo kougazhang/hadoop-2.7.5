@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>dfs.name.dir</name>
+    <value>/disk/ssd1/hdfs/name</value>
+  </property>
+  <property>
+    <name>dfs.data.dir</name>
+    <value>/disk/sata01/hdfs/data,/disk/sata02/hdfs/data,/disk/sata03/hdfs/data,/disk/sata04/hdfs/data,/disk/sata05/hdfs/data,/disk/sata06/hdfs/data,/disk/sata07/hdfs/data,/disk/sata08/hdfs/data,/disk/sata09/hdfs/data,/disk/sata10/hdfs/data</value>
+  </property>
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>{{ host }}:50010</value>
+  </property>
+  <property>
+    <name>dfs.datanode.ipc.address</name>
+    <value>{{ host }}:50020</value>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>{{ host }}:50075</value>
+  </property>
+  <property>
+    <name>dfs.namenode.handler.count</name>
+    <value>10</value>
+  </property>
+  <property>
+    <name>dfs.replication</name>
+    <value>3</value>
+  </property>
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>dfs.nameservices</name>
+    <value>logger-v2</value>
+  </property>
+  <property>
+    <name>dfs.ha.namenodes.logger-v2</name>
+    <value>nn1,nn2</value>
+  </property>
+  <property>
+    <name>dfs.namenode.rpc-address.logger-v2.nn1</name>
+    <value>192.168.33.10:8020</value>
+  </property>
+  <property>
+    <name>dfs.namenode.rpc-address.logger-v2.nn2</name>
+    <value>192.168.33.11:8020</value>
+  </property>
+  <property>
+    <name>dfs.namenode.http-address.logger-v2.nn1</name>
+    <value>192.168.33.10:50070</value>
+  </property>
+  <property>
+    <name>dfs.namenode.http-address.logger-v2.nn2</name>
+    <value>192.168.33.11:50070</value>
+  </property>
+  <property>
+    <name>dfs.namenode.shared.edits.dir</name>
+    <value>qjournal://192.168.33.10:8485;192.168.33.11:8485;192.168.33.12:8485/logger-v2</value>
+  </property>
+  <property>
+    <name>dfs.client.failover.proxy.provider.logger-v2</name>
+    <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+  </property>
+  <property>
+    <name>dfs.ha.fencing.methods</name>
+    <value>sshfence</value>
+  </property>
+  <property>
+    <name>dfs.ha.fencing.ssh.private-key-files</name>
+    <value>/root/.ssh/id_rsa</value>
+  </property>
+  <property>
+    <name>dfs.ha.fencing.methods</name>
+    <value>sshfence(root:65422)</value>
+  </property>
+  <property>
+    <name>dfs.ha.fencing.ssh.connect-timeout</name>
+    <value>30000</value>
+  </property>
+  <property>
+    <name>dfs.journalnode.edits.dir</name>
+    <value>/disk/ssd1/hdfs/journal</value>
+  </property>
+  <property>
+    <name>dfs.ha.automatic-failover.enabled</name>
+    <value>true</value>
+  </property>
+</configuration>
